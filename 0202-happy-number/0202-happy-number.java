@@ -1,8 +1,5 @@
 class Solution {
     public boolean isHappy(int n) {
-        
-//         if(n==1 || n==-1) return true;
-        
         Set<Integer> visit = new HashSet<>();
         
         while(!visit.contains(n)){
