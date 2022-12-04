@@ -7,16 +7,15 @@ class Solution {
         for(int num : nums){
             map.put(num,map.getOrDefault(num,0)+1);
         }
-        PriorityQueue<Map.Entry<Integer,Integer>> maxHeap = new PriorityQueue<>((a,b) -> b.getValue() - a.getValue());
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> map.get(b) - map.get(a));
 
-        for(Map.Entry entry : map.entrySet()){
-            maxHeap.add(entry);
+        for(int key : map.keySet()){
+            maxHeap.add(key);
         }
 
         for(int i=0; i<k; i++){
-            ans[i] = maxHeap.poll().getKey();
+            ans[i] = maxHeap.poll();
         }
-
         return ans;
     }
 }
