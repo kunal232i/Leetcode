@@ -43,4 +43,34 @@ class Solution {
         
         return min > s.length() ? "" : s.substring(start,start+min);
     }
+
+    /*
+    Approch
+    map
+    a = 0
+    b = 1
+    c = 0
+
+    match = 1;
+
+    0123456789012
+    adobecodebanc
+       l
+         i
+       d
+
+
+
+    map - 1;right
+    the if map.get(r) == 0 then and then olny match++;
+
+
+    min = i-l+1
+    5-0+1 = 6
+    9-3+1 = 7
+    10-5+1 = 6
+    12-9+1 = 4
+    
+    O(n);
+    */
 }
