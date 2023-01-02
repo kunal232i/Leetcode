@@ -4,7 +4,7 @@ class Solution {
         
         if(word.length() < 2) return true;
         
-        if(Character.isUpperCase(word.charAt(0)) && Character.isUpperCase(word.charAt(1))){
+        if(Character.isUpperCase(words[0]) && Character.isUpperCase(words[1])){
             for(int i=2; i<words.length; i++){
                 if(Character.isLowerCase(words[i])){
                     return false;
