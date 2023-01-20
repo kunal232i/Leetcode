@@ -6,6 +6,7 @@ class Solution {
         
         
         for(int i=ind; i<nums.length; i++){
+            if( i>ind && nums[i] == nums[i-1]) continue;
             if(ds.size()==0 || ds.get(ds.size()-1) <= nums[i]){
                 ds.add(nums[i]);
                 rec(nums, ans, i+1, ds);
