@@ -1,38 +1,24 @@
 class Solution {
     public void setZeroes(int[][] matrix) {
-        boolean rowZero = false;
-
+        boolean rowPos[] = new boolean[matrix.length];
+        boolean colPos[] = new boolean[matrix[0].length];
+        
         for(int row=0; row<matrix.length; row++){
-            for(int col=0; col<matrix[0].length; col++){
-                    if(matrix[row][col] == 0){
-                       matrix[0][col] = 0;
-                        if(row > 0){
-                            matrix[row][0] = 0;
-                        }else{
-                            rowZero = true;
-                        }
-                    }
-
+            for(int col=0; col<matrix[row].length; col++){
+                if(matrix[row][col] == 0){
+                    rowPos[row]=true;
+                    colPos[col]=true;
+                }
             }
         }
-
-        for(int row=1; row<matrix.length; row++){
-            for(int col=1; col<matrix[row].length; col++){
-                if(matrix[0][col] == 0 || matrix[row][0] == 0){
+        for(int row=0; row<matrix.length; row++){
+            for(int col=0; col<matrix[row].length; col++){
+                if(rowPos[row] == true || colPos[col] == true){
                     matrix[row][col] = 0;
                 }
             }
         }
-
-        if(matrix[0][0] == 0){
-            for(int row=0;row<matrix.length;row++){
-                matrix[row][0] = 0;
-            }
-        }
-        if(rowZero){
-            for(int col=0; col<matrix[0].length;col++){
-                matrix[0][col] = 0;
-            }
-        }
+        System.out.print(Arrays.deepToString(matrix));
+        System.out.print(Arrays.toString(colPos));
     }
 }
