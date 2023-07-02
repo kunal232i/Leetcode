@@ -1,16 +1,21 @@
 class Solution {
+    
+    public String sortedString(String str){
+        char[] chars = str.toCharArray();
+        Arrays.sort(chars);
+        String sorted = new String(chars);
+        return sorted;
+    }
+    
     public boolean isAnagram(String s, String t) {
         if(s.length() != t.length()){
             return false;
         }
-        Map<Character, Integer> smap = new HashMap<>();
-        Map<Character, Integer> tmap = new HashMap<>();
-        
-        for(int i=0; i<s.length(); i++){
-            smap.put(s.charAt(i),smap.getOrDefault(s.charAt(i),0)+1);
-            tmap.put(t.charAt(i),tmap.getOrDefault(t.charAt(i),0)+1);
+        s = sortedString(s);
+        t = sortedString(t);
+        if(s.equals(t)){
+            return true;
         }
-        
-        return smap.equals(tmap);
+        return false;
     }
 }
