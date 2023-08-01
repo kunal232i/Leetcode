@@ -11,14 +11,13 @@ class Solution {
                 }
             }
         }
+        
         for(int row=0; row<matrix.length; row++){
             for(int col=0; col<matrix[row].length; col++){
-                if(rowPos[row] == true || colPos[col] == true){
-                    matrix[row][col] = 0;
+                if(rowPos[row] || colPos[col]){
+                    matrix[row][col]=0;
                 }
             }
         }
-        System.out.print(Arrays.deepToString(matrix));
-        System.out.print(Arrays.toString(colPos));
     }
 }
