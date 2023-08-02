@@ -1,23 +1,22 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
         List<int[]> res = new ArrayList<>();
-        Arrays.sort(intervals, Comparator.comparingInt(o->o[0]));
-        int[] curr_interval = intervals[0];
-        res.add(curr_interval);
+        Arrays.sort(intervals, Comparator.comparingInt(o -> o[0]));
+        int currInterval[] = intervals[0];
+        res.add(currInterval);
         
-        for(int[] interval: intervals){
-            int curr_start = curr_interval[0];
-            int curr_end = curr_interval[1];
-            int next_s = interval[0];
-            int next_e = interval[1];
+        for(int[] interval : intervals){
+            int currStart = currInterval[0];
+            int currEnd = currInterval[1];
+            int nextStart = interval[0];
+            int nextEnd = interval[1];
             
-            if(curr_end >= next_s){
-                curr_interval[1] = Math.max(curr_end,next_e);
+            if(currEnd >= nextStart){
+                currInterval[1] = Math.max(currEnd, nextEnd);
             }else{
-                curr_interval=interval;
-                res.add(curr_interval);
+                currInterval = interval;
+                res.add(currInterval);
             }
-            
         }
         return res.toArray(new int[res.size()][]);
     }
