@@ -9,32 +9,37 @@
  * }
  */
 class Solution {
+    
     public void reorderList(ListNode head) {
-         if(head==null||head.next==null) return;
+        ListNode slow = head;
+        ListNode fast = head.next;
         
-         ListNode p1 = head;
-         ListNode p2 = head;
-        
-         while(p2.next != null && p2.next.next != null){
-            p1 = p1.next;
-            p2 = p2.next.next;
-         }
-        ListNode preMiddle=p1;
-        ListNode preCurrent=p1.next;
-        while(preCurrent.next!=null){
-            ListNode current=preCurrent.next;
-            preCurrent.next=current.next;
-            current.next=preMiddle.next;
-            preMiddle.next=current;
+        // slow fast to find mid
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
         }
-         p1=head;
-         p2=preMiddle.next;
-        while(p1!=preMiddle){
-            preMiddle.next=p2.next;
-            p2.next=p1.next;
-            p1.next=p2;
-            p1=p2.next;
-            p2=preMiddle.next;
+        
+        // reverse from mid
+        ListNode afterMid = slow.next;
+        ListNode prev = slow.next = null;
+        while (afterMid != null) {
+            ListNode tmp = afterMid.next;
+            afterMid.next = prev;
+            prev = afterMid;
+            afterMid = tmp;
+        }
+        
+        // Re-assign 
+        ListNode first = head;
+        afterMid = prev;
+        while (afterMid != null) {
+            ListNode tmp1 = first.next;
+            ListNode tmp2 = afterMid.next;
+            first.next = afterMid;
+            afterMid.next = tmp1;
+            first = tmp1;
+            afterMid = tmp2;
         }
     }
 }
